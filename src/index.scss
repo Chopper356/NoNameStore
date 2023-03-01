@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Rubik', sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  transition: all .3s;
+  box-sizing: border-box;
+  outline: none;
 }
 
 code {

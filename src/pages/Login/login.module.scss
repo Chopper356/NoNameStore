@@ -1,0 +1,64 @@
+.login {
+	max-width: 25vw;
+	background-color: white;
+	box-shadow: 0 0 10px #0000001a;
+	border-radius: 10px;
+	padding: 20px 30px;
+	margin: auto;
+	transform: translate(0%, 50%);
+
+	.title {
+		color: #777777;
+		font-size: 19px;
+		font-weight: 500;
+		margin: 15px auto;
+		text-align: center;
+	}
+
+	input {
+		background-color: #f7f7f7;
+		color: #777777;
+		padding: 15px;
+		font-size: 14px;
+		width: 100%;
+		margin-bottom: 15px;
+		border: none;
+	}
+
+	.reset_pass {
+		color: #1c1b1b;
+		font-size: 14px;
+		cursor: pointer;
+	}
+
+	button {
+		color: white;
+		background-color: #232F3E;
+		border-radius: 20px;
+		padding: 10px 35px;
+		font-size: 14px;
+		border: none;
+		cursor: pointer;
+		text-transform: uppercase;
+		display: block;
+		margin: auto;
+		margin-top: 20px;
+
+		&:hover {
+			background-color: #febd69;
+			color: #232F3E;
+		}
+
+		&:last-child {
+			background-color: #febd69;
+			color: #232F3E;
+			text-transform: none;
+			margin-top: 40px;
+
+			&:hover {
+				background-color: #232F3E;
+				color: #febd69;
+			}
+		}
+	}
+}

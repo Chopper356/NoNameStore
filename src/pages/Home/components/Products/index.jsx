@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 import styles from "./products.module.scss";
 
 function Products() {
@@ -65,7 +66,7 @@ function Products() {
 				</div>
 
 				<div className={styles.content}>
-					<div className={styles.product}>
+					<Link className={styles.product} to="/product/v3nn3487v8wuedbcg">
 						<i className={classNames("far fa-heart", styles.feature_icon)}></i>
 						
 						<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/14_00_652x.jpg?v=1655096590" alt="product" />
@@ -83,7 +84,7 @@ function Products() {
 							</div>
 							<div className={styles.price}>$378.43</div>
 						</div>
-					</div>
+					</Link>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 import { Carousel } from '@trendyol-js/react-carousel';
 import Banners from "./components/Banners";
-import Products from "./components/Products";
+import Products from './components/Products';
+import ProductsQuantity from "./components/ProductsQuantity";
 
 import styles from "./home.module.scss";
 
@@ -59,6 +60,7 @@ function Home() {
 					</Carousel>
 				</div>
 
+				<ProductsQuantity />
 				<Products />
 			</div>
 		</div>

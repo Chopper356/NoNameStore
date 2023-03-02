@@ -4,7 +4,7 @@ import styles from "./header.module.scss";
 
 function Header() {
 	return (
-		<div className={styles.header}>
+		<header className={styles.header}>
 			<div className={styles.content}>
 				<div className={styles.logo}>
 					<span>NoName</span>
@@ -50,7 +50,7 @@ function Header() {
 					</div>
 				</div>	
 			</div>
-		</div>
+		</header>
 	);
 }
 

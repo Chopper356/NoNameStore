@@ -4,23 +4,23 @@ import styles from "./header.module.scss";
 
 function Header() {
 	return (
-		<div className={classNames(styles.header)}>
-			<div className={classNames(styles.content)}>
-				<div className={classNames(styles.logo)}>
+		<div className={styles.header}>
+			<div className={styles.content}>
+				<div className={styles.logo}>
 					<span>NoName</span>
 					Store
 					<span>.</span>
 				</div>
 
-				<div className={classNames(styles.search)}>
+				<div className={styles.search}>
 					<input type="text" placeholder="Search..."/>
 					<div>
 						<i className="fal fa-search"></i>
 					</div>
 				</div>
 
-				<div className={classNames(styles.actions)}>
-					<div className={classNames(styles.action)}>
+				<div className={styles.actions}>
+					<div className={styles.action}>
 						<i className="fal fa-heart"></i>
 
 						<span>
@@ -30,7 +30,7 @@ function Header() {
 						</span>
 					</div>
 
-					<div className={classNames(styles.action)}>
+					<div className={styles.action}>
 						<i className="fal fa-user"></i>
 
 						<span>
@@ -44,8 +44,8 @@ function Header() {
 						<i className="fal fa-shopping-basket"></i>
 
 						<span>
-							<div className={classNames(styles.count)}>12</div>
-							<div className={classNames(styles.total_price)}>₴12.3400</div>
+							<div className={styles.count}>12</div>
+							<div className={styles.total_price}>₴12.3400</div>
 						</span>
 					</div>
 				</div>	

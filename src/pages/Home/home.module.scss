@@ -1,5 +1,36 @@
 .home {
-	max-width: 90vw;
-	margin: auto;
+	background-color: #F5F5F7;
 	
+	.content {
+		max-width: 90vw;
+		margin: auto;
+		.features {
+			.feature {
+				padding: 40px 0px;
+				display: flex;
+				align-items: center;
+				
+				i {
+					font-size: 1.5vw;
+				}
+
+				.info {
+					margin-left: 20px;
+					color: #1c1b1b;
+
+
+					.title {
+						font-size: 1vw;
+						font-weight: 500;
+						line-height: 1.5vw;
+					}
+
+					.subtitle {
+						font-size: 0.6vw;
+						color: #666;
+					}
+				}
+			}
+		}
+	}
 }

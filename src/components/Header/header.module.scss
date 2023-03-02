@@ -3,15 +3,15 @@
 	
 	.content {
 		margin: auto;
-		max-width: 1300px;
+		max-width: 90vw;
 		color: white;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 25px 0px;
+		padding: 1.5vw 0px;
 
 		.logo {
-			font-size: 38px;
+			font-size: 34px;
 
 			span {
 				color: #e76006;
@@ -26,7 +26,7 @@
 			input {
 				width: 350px;
 				border: 1px solid white;
-				padding: 10px 20px;
+				padding: 0.7vw 1.5vw;
 				border-radius: 5px 0px 0px 5px;
 
 				&:focus {
@@ -40,7 +40,7 @@
 				display: flex;
 				align-items: center;
 				border-radius: 0px 5px 5px 0px;
-				padding: 0px 10px;
+				padding: 0px 0.7vw;
 
 				i {
 					color: black;
@@ -58,7 +58,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				margin-right: 40px;
+				margin-right: 2.5vw;
 				font-size: 14px;
 				cursor: pointer;
 

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Basket from '../../components/Basket';
 import Header from '../../components/Header';
 import Home from '../Home';
 import Login from '../Login';
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Header />
+        <Basket />
 
         <main>
             <Routes>

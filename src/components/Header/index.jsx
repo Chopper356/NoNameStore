@@ -1,9 +1,13 @@
 import classNames from "classnames";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { showBascet } from "../../store/basketData";
 
 import styles from "./header.module.scss";
 
 function Header() {
+	const dispatch = useDispatch();
+	
 	return (
 		<header className={styles.header}>
 			<div className={styles.content}>
@@ -43,7 +47,7 @@ function Header() {
 						</span>
 					</Link>
 
-					<div className={classNames(styles.action, styles.basket)}>
+					<div className={classNames(styles.action, styles.basket)} onClick={() => dispatch(showBascet())}>
 						<i className="fal fa-shopping-basket"></i>
 
 						<span>

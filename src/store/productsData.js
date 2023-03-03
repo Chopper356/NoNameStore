@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 export const productsData = createSlice({
-  name: "user",
+  name: "products",
   initialState: {
     all: [],
     current: {}

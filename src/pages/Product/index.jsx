@@ -1,9 +1,11 @@
 import Carousel from 'better-react-carousel'
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct } from '../../store/basketData';
 import styles from "./product.module.scss";
 
 function Product() {
+	const dispatch = useDispatch();
 	const product = useSelector((state) => state.products.current);
 
 	return (
@@ -59,7 +61,7 @@ function Product() {
 						</div>
 					</div>
 
-					<button>Add to cart</button>
+					<button onClick={() => dispatch(addProduct(product))}>Add to cart</button>
 					<button>Buy It Now</button>
 
 				</div>

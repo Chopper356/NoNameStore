@@ -1,28 +1,24 @@
 import Carousel from 'better-react-carousel'
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 import styles from "./product.module.scss";
 
 function Product() {
+	const product = useSelector((state) => state.products.current);
+
 	return (
 		<div className={styles.product}>
-			<Carousel cols={1} rows={1} gap={10} loop showDots="true" autoplay={5000} hideArrow="true" containerStyle={{height: "fit-content", maxWidth: "50vw"}}>
-				<Carousel.Item>
-						<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/15_e3ed94b3-4730-40b7-92f8-eeef933a7f4f_884x.jpg?v=1655096645" alt="banner_image" />
-				</Carousel.Item>
-				<Carousel.Item>
-						<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/15_02_884x.jpg?v=1655096656" alt="banner_image" />
-				</Carousel.Item>
-				<Carousel.Item>
-						<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/15_00_884x.jpg?v=1655096656" alt="banner_image" />
-				</Carousel.Item>
-				<Carousel.Item>
-						<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/15_03_884x.jpg?v=1655096656" alt="banner_image" />
-				</Carousel.Item>
+			<Carousel cols={1} rows={1} gap={10} loop showDots="true" autoplay={5000} hideArrow containerStyle={{height: "fit-content", maxWidth: "50vw"}}>
+				{product?.images.map((image) => (
+					<Carousel.Item>
+						<img src={image} alt="banner_image" />
+					</Carousel.Item>
+				))}
 			</Carousel>
 
 			<div className={styles.info}>
-				<div className={styles.title}>Honor T1 7.0 1 GB RAM 8 GB ROM 7 Inch With Wi-Fi+3G Tablet</div>
-				<div className={styles.price}>₴3,779.00</div>
+				<div className={styles.title}>{product.title}</div>
+				<div className={styles.price}>₴{product.price}</div>
 				<div className={styles.stars}>
 					<i className="fas fa-star"></i>
 					<i className="fas fa-star"></i>

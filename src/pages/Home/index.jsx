@@ -14,7 +14,7 @@ function Home() {
 				<div className={styles.features}>
 					<Carousel show={5} slide={1} swiping={true} hideArrows="true">
 						<div className={styles.feature}>
-							<i class="far fa-truck-container"></i>
+							<i className="far fa-truck-container"></i>
 
 							<div className={styles.info}>
 								<div className={styles.title}>Free Shipping</div>
@@ -23,7 +23,7 @@ function Home() {
 						</div>
 
 						<div className={styles.feature}>
-							<i class="far fa-gift"></i>
+							<i className="far fa-gift"></i>
 
 							<div className={styles.info}>
 								<div className={styles.title}>Daily Surprise Offers</div>
@@ -32,7 +32,7 @@ function Home() {
 						</div>
 
 						<div className={styles.feature}>
-							<i class="far fa-headset"></i>
+							<i className="far fa-headset"></i>
 
 							<div className={styles.info}>
 								<div className={styles.title}>Support 24/7</div>
@@ -41,7 +41,7 @@ function Home() {
 						</div>
 
 						<div className={styles.feature}>
-							<i class="far fa-badge-percent"></i>
+							<i className="far fa-badge-percent"></i>
 
 							<div className={styles.info}>
 								<div className={styles.title}>Affordable Prices</div>
@@ -50,7 +50,7 @@ function Home() {
 						</div>
 
 						<div className={styles.feature}>
-							<i class="far fa-credit-card"></i>
+							<i className="far fa-credit-card"></i>
 
 							<div className={styles.info}>
 								<div className={styles.title}>Secure Payments</div>

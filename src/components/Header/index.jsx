@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
 import styles from "./header.module.scss";
 
@@ -6,11 +7,13 @@ function Header() {
 	return (
 		<header className={styles.header}>
 			<div className={styles.content}>
-				<div className={styles.logo}>
-					<span>NoName</span>
-					Store
-					<span>.</span>
-				</div>
+				<Link to="/">
+					<div className={styles.logo}>
+						<span>NoName</span>
+						Store
+						<span>.</span>
+					</div>
+				</Link>
 
 				<div className={styles.search}>
 					<input type="text" placeholder="Search..."/>
@@ -30,7 +33,7 @@ function Header() {
 						</span>
 					</div>
 
-					<div className={styles.action}>
+					<Link to="/login" className={styles.action}>
 						<i className="fal fa-user"></i>
 
 						<span>
@@ -38,7 +41,7 @@ function Header() {
 							<br />
 							My account
 						</span>
-					</div>
+					</Link>
 
 					<div className={classNames(styles.action, styles.basket)}>
 						<i className="fal fa-shopping-basket"></i>

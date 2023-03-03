@@ -3,49 +3,41 @@
 	border-radius: 10px;
 	padding: 30px;
 	box-shadow: 0 0 10px #0000001a;
-	display: flex;
-	align-items: center;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, 20%);
 
-	.column {
-		&:last-child {
-			.item {
-				border-right: none;
+	.item {
+		display: flex;
+		align-items: center;
+		padding: 10px 30px;
+		border-bottom: 1px solid #ededed;
+		border-right: 1px solid #ededed;
+
+		&:hover {
+			.title {
+				text-decoration: 1px solid black;
 			}
 		}
+
+		&:last-child {
+			border-bottom: none;
+		}
 		
-		.item {
-			display: flex;
-			align-items: center;
-			padding: 10px 30px;
-			border-bottom: 1px solid #ededed;
-			border-right: 1px solid #ededed;
+		.title {
+			text-align: center;
+			font-size: 0.95vw;
+			font-weight: 500;
+			color: #1c1b1b;
+		}
 
-			&:hover {
-				.title {
-					text-decoration: 1px solid black;
-				}
-			}
+		.count {
+			color: #666;
+			font-size: 0.7vw;
+			line-height: 2vw;
+		}
 
-			&:last-child {
-				border-bottom: none;
-			}
-			
-			.title {
-				text-align: center;
-				font-size: 0.95vw;
-				font-weight: 500;
-				color: #1c1b1b;
-			}
-
-			.count {
-				color: #666;
-				font-size: 0.7vw;
-				line-height: 2vw;
-			}
-
-			img {
-				width: 100%;
-			}
+		img {
+			width: fit-content;
 		}
 	}
 }

@@ -1,8 +1,62 @@
 import classNames from "classnames";
+import { useCallback, useMemo, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { setCurrentProduct } from "../../../../store/productsData";
 import styles from "./products.module.scss";
 
 function Products() {
+	const dispatch = useDispatch();
+	const products = useSelector((state) => state.products.all);
+	const [categories,] = useState([]);
+	const [selectedCategory, setSelectedCategory] = useState("");
+	const [selectedSort, setSelectedSort] = useState("");
+	const sortedProducts = useMemo(() => {
+		let filtered = [...products];
+
+		if (selectedCategory) {
+			filtered  = products.filter((el) => el.categoryId === selectedCategory);
+		}
+
+		if (selectedSort) {
+			filtered.sort((a, b) => {
+				if (selectedSort === "asc") {
+					return a.price - b.price;
+				} else if (selectedSort === "desc") {
+					return b.price - a.price;
+				} else if (selectedSort === "popularity") {
+					return a.sales - b.sales;
+				} else {
+					return 0;
+				}
+			});
+		}
+
+		return filtered;
+	}, [products, selectedCategory, selectedSort]);
+
+	const renderProducts = useCallback((item) => (
+		<Link className={styles.product} to={"/product/" + item._id} key={item._id} onClick={() => dispatch(setCurrentProduct(item))}>
+			<i className={classNames("far fa-heart", styles.feature_icon)}></i>
+			
+			<img src={item.images[0]} alt="product" />
+			<img className={styles.second} src={item.images[1]} alt="product" />
+			
+			<div className={styles.info}>
+				<div className={styles.company}>{item.company}</div>
+				<div className={styles.name}>{item.title}</div>
+				<div className={styles.stars}>
+					<i className="fas fa-star"></i>
+					<i className="fas fa-star"></i>
+					<i className="fas fa-star"></i>
+					<i className="fas fa-star"></i>
+					<i className="fas fa-star"></i>
+				</div>
+				<div className={styles.price}>${item.price}</div>
+			</div>
+		</Link>
+	), [dispatch]);
+
 	return (
 		<div className={styles.products}>
 			<div className={styles.section_title}>Products Collections</div>
@@ -11,80 +65,33 @@ function Products() {
 				<div className={styles.leftbar}>
 					<div className={classNames(styles.sector, styles.categories)}>
 						<div className={styles.block_title}>Category</div>
-						<div className={styles.category}>
-							<span>Laptops & Computers</span>
-							<span>16</span>
-						</div>
-						<div className={styles.category}>
-							<span>Mobiles & Tablets</span>
-							<span>78</span>
-						</div>
-						<div className={styles.category}>
-							<span>Headphones</span>
-							<span>312</span>
-						</div>
-						<div className={styles.category}>
-							<span>Smart Television</span>
-							<span>64</span>
-						</div>
-						<div className={styles.category}>
-							<span>Music & Gaming</span>
-							<span>875</span>
-						</div>
-						<div className={styles.category}>
-							<span>Smartwatchers</span>
-							<span>54</span>
-						</div>
-						<div className={styles.category}>
-							<span>Home Appliances</span>
-							<span>34</span>
-						</div>
-						<div className={styles.category}>
-							<span>Accessories</span>
-							<span>86</span>
-						</div>
-						<div className={styles.category}>
-							<span>Cameras & Videos</span>
-							<span>765</span>
-						</div>
+						
+						{categories.map(({title, count, _id}) => (
+							<div className={styles.category} onClick={() => setSelectedCategory(_id)} key={_id}>
+								<span>{title}</span>
+								<span>{count}</span>
+							</div>
+						))}
 					</div>
 
 					<div className={classNames(styles.sector, styles.filters)}>
-						<div className={styles.block_title}>Filters</div>
+						<div className={styles.block_title}>Sorting</div>
 
 						<div className={styles.filter}>
 							<div className={styles.title}>Sort By:</div>
 
-							<select>
-								<option selected disabled>Select sorting</option>
-								<option value="qwe">Price ascending</option>
-								<option value="qwe">By decreasing price</option>
-								<option value="qwe">By popularity</option>
+							<select defaultValue={"none"} onChange={(el) => setSelectedSort(el.target.value)}>
+								<option value={"none"} disabled>Select sorting</option>
+								<option value={"asc"}>Price ascending</option>
+								<option value={"desc"}>Price descending</option>
+								<option value={"popularity"}>By popularity</option>
 							</select>
 						</div>
 					</div>
 				</div>
 
 				<div className={styles.content}>
-					<Link className={styles.product} to="/product/v3nn3487v8wuedbcg">
-						<i className={classNames("far fa-heart", styles.feature_icon)}></i>
-						
-						<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/14_00_652x.jpg?v=1655096590" alt="product" />
-						<img className={styles.second} src="https://cdn.shopify.com/s/files/1/0620/5082/8457/products/14_652x.jpg?v=1655096578" alt="product" />
-						
-						<div className={styles.info}>
-							<div className={styles.company}>Bajaj</div>
-							<div className={styles.name}>HD Resolution Indoor Wi-Fi Security Camera, White</div>
-							<div className={styles.stars}>
-								<i className="fas fa-star"></i>
-								<i className="fas fa-star"></i>
-								<i className="fas fa-star"></i>
-								<i className="fas fa-star"></i>
-								<i className="fas fa-star"></i>
-							</div>
-							<div className={styles.price}>$378.43</div>
-						</div>
-					</Link>
+					{sortedProducts.map(renderProducts)}
 				</div>
 			</div>
 		</div>

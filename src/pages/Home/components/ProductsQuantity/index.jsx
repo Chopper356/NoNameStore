@@ -1,107 +1,23 @@
+import { useCallback, useState } from "react";
 import styles from "./products-quantity.module.scss";
 
 function ProductsQuantity() {
+	const [products,] = useState([])
+
+	const renderItems = useCallback(({title, count, image, _id}) => (
+		<div className={styles.item} key={ _id }>
+			<div className={styles.info}>
+				<div className={styles.title}>{ title }</div>
+				<div className={styles.count}>{ count } Items</div>
+			</div>
+
+			<img src={image} alt="product" />
+		</div>
+	), []);
+
 	return (
 		<div className={styles.products}>
-			<div className={styles.column}>
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-			</div>
-
-			<div className={styles.column}>
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-			</div>
-
-			<div className={styles.column}>
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-			</div>
-
-			<div className={styles.column}>
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-			</div>
-
-			<div className={styles.column}>
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-
-				<div className={styles.item}>
-					<div className={styles.info}>
-						<div className={styles.title}>Computers & Laptop</div>
-						<div className={styles.count}>8 Items</div>
-					</div>
-
-					<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/02_110x110.jpg?v=1654929897" alt="product" />
-				</div>
-			</div>
+			{products.map(renderItems)}
 		</div>
 	);
 }

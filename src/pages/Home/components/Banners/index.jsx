@@ -6,7 +6,7 @@ function Banners() {
 	return (
 		<div className={styles.slider_banner}>
 			<div className={styles.content}>
-				<Carousel cols={1} rows={1} gap={10} loop showDots="true" hideArrow="true" autoplay={5000} containerStyle={{height: "fit-content"}}>
+				<Carousel cols={1} rows={1} gap={10} loop showDots="true" hideArrow autoplay={5000} containerStyle={{height: "fit-content"}}>
 					<Carousel.Item>
 						<div className={styles.slider_item}>
 							<img src="https://cdn.shopify.com/s/files/1/0620/5082/8457/files/main-banner-1_830x550.jpg?v=1655701492;" alt="banner_image" />

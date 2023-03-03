@@ -9,18 +9,18 @@ import './app.module.scss';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <BrowserRouter>
+        <Header />
 
-      <main>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/product/:id" element={<Product />}/>
-            <Route path="/login" element={<Login />}/>
-            <Route path="/registration" element={<Registration />}/>
-          </Routes>
-        </BrowserRouter>
-      </main>
+        <main>
+            <Routes>
+              <Route path="/" element={<Home />}/>
+              <Route path="/product/:id" element={<Product />}/>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/registration" element={<Registration />}/>
+            </Routes>
+        </main>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,27 +1,15 @@
 import classNames from "classnames";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { hideBascet } from "../../store/basketData";
+import { hideBascet, deleteProduct } from "../../store/basketData";
 import styles from "./basket.module.scss";
 
 function Basket() {
 	const dispatch = useDispatch();
-	const basket = useSelector((state) => state.bascet);
-	const [totalItems, setTotalItems] = useState(0);
-	const [totalPrice, setTotalPrice] = useState(0);
-
-	useEffect(() => {
-		let price = 0;
-		for(let product of basket.products) {
-			price += product.price;
-		}
-
-		setTotalPrice(price);
-		setTotalItems(basket.products.length);
-	}, [basket.products]);
+	const basket = useSelector((state) => state.basket);
 
 	const renderProducts = useCallback((item) => (
-		<div className={styles.product}>
+		<div className={styles.product} key={item._id}>
 			<img src={item.images[0]} alt="product" />
 
 			<div className={styles.info}>
@@ -30,10 +18,10 @@ function Basket() {
 			</div>
 
 			<div className={styles.actions}>
-				<i className="fal fa-trash-alt"></i>
+				<i className="fal fa-trash-alt" onClick={() => dispatch(deleteProduct(item._id))}></i>
 			</div>
 		</div>
-	), []);
+	), [dispatch]);
 
 	return (
 		<div className={classNames(styles.basket, {[styles.show]: basket.show})}>
@@ -41,27 +29,32 @@ function Basket() {
 				<i className="far fa-arrow-right"></i>
 			</div>
 
-			<div className={styles.empty}>Your cart is currently empty.</div>
+			{
+				basket.products.length ?
+				<>
+					<div className={styles.products}>
+						{basket.products.map(renderProducts)}
+					</div>
 
-			<div className={styles.products}>
-				{basket.products.map(renderProducts)}
-			</div>
+					<div className={classNames(styles.darked, styles.total_info)}>
+						<div className={styles.total_products}>
+							<div className={styles.subtitle}>Total Items</div>
+							<div className={styles.count}>{basket.totalCount}</div>
+						</div>
 
-			<div className={classNames(styles.darked, styles.total_info)}>
-				<div className={styles.total_products}>
-					<div className={styles.subtitle}>Total Items</div>
-					<div className={styles.count}>{totalItems}</div>
-				</div>
+						<div className={classNames(styles.darked, styles.total_price)}>
+							<div className={styles.subtitle}>Subtotal</div>
+							<div className={styles.full_price}>${basket.totalPrice}</div>
+						</div>
+					</div>
 
-				<div className={classNames(styles.darked, styles.total_price)}>
-					<div className={styles.subtitle}>Subtotal</div>
-					<div className={styles.full_price}>${totalPrice}</div>
-				</div>
-			</div>
-
-			<div className={styles.bottom}>
-				<button>Order</button>
-			</div>
+					<div className={styles.bottom}>
+						<button>Order</button>
+					</div>
+				</>
+				:
+				<div className={styles.empty}>Your cart is currently empty.</div>
+			}
 		</div>
 	);
 }

@@ -8,7 +8,58 @@ import styles from "./products.module.scss";
 function Products() {
 	const dispatch = useDispatch();
 	const products = useSelector((state) => state.products.all);
-	const [categories,] = useState([]);
+	const [categories,] = useState([
+		{
+			title: "Laptops & Computers",
+			count: 123,
+			_id: "23fc3d23wds23"
+		},
+		{
+			title: "Mobiles & Tablets",
+			count: 523,
+			_id: "3v3er4c4ec34ec"
+		},
+		{
+			title: "Headphones",
+			count: 252,
+			_id: "g34g34ef32e4df"
+		},
+		{
+			title: "Smart Television",
+			count: 2253,
+			_id: "23ecwcxd3we2c2e4c"
+		},
+		{
+			title: "Music & Gaming",
+			count: 235,
+			_id: "v4435rfv3wc4ec"
+		},
+		{
+			title: "Smartwatchers",
+			count: 2352,
+			_id: "vc345rv343vc4e"
+		},
+		{
+			title: "Portable Speakers",
+			count: 512,
+			_id: "f34f3wecdf3ec32e4"
+		},
+		{
+			title: "Accessories",
+			count: 653,
+			_id: "g34gv3wefc324ef"
+		},
+		{
+			title: "Cameras & Videos",
+			count: 124,
+			_id: "cwecwecwec3223c"
+		},
+		{
+			title: "Home Appliances",
+			count: 124,
+			_id: "f34e3w2e4f23"
+		}
+	]);
 	const [selectedCategory, setSelectedCategory] = useState("");
 	const [selectedSort, setSelectedSort] = useState("");
 	const sortedProducts = useMemo(() => {

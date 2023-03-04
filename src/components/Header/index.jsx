@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { showBascet } from "../../store/basketData";
 
@@ -7,6 +7,7 @@ import styles from "./header.module.scss";
 
 function Header() {
 	const dispatch = useDispatch();
+	const {totalPrice, totalCount} = useSelector((state) => state.basket);
 	
 	return (
 		<header className={styles.header}>
@@ -51,8 +52,8 @@ function Header() {
 						<i className="fal fa-shopping-basket"></i>
 
 						<span>
-							<div className={styles.count}>12</div>
-							<div className={styles.total_price}>₴12.3400</div>
+							<div className={styles.count}>{totalCount}</div>
+							<div className={styles.total_price}>₴{totalPrice}</div>
 						</span>
 					</div>
 				</div>	

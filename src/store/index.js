@@ -7,7 +7,7 @@ export default configureStore({
   reducer: {
     user: userData,
     products: productsData,
-    bascet: basketData
+    basket: basketData
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 })
